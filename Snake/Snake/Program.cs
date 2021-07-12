@@ -10,12 +10,60 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1,3,'*');
+            Point p1 = new Point(1, 3, '*');
             p1.draw();
-            Point p2 = new Point(4,8,'+');
+
+            Point p2 = new Point(4, 5, '#');
             p2.draw();
+            Console.Write("\n\n");
+            int x = 1;
+            Func1(x);
+            Console.WriteLine($"Func1 x={x}");
+
+            Func2(x);
+            Console.WriteLine($"Func2 x={x}");
+
+            Func3(x);
+            Console.WriteLine($"Func3 x={x}");
+            Console.Write("\n\n");
+            Move(p1, 10, 10);
+            Console.WriteLine($"Move(p1, 10, 10) p1.x = {p1.x}, p1.y = {p1.y}");
             Console.ReadKey();
+            Console.Clear();
+
+            Console.Write("\n\n");
+            p1.draw();
+            Console.Write("\n\n");
+
+            Reset(p2);
+            Console.WriteLine($"Reset(p2) p2.x = {p2.x}, p2.y = {p2.y}");
+            Console.ReadKey();
+            Console.Clear();
+            Console.Write("\n\n");
+            p2.draw();
         }
-       
+        public static void Move(Point p, int dx, int dy)
+        {
+            p.x = p.x + dx;
+            p.y = p.y + dy;
+        }
+        public static void Reset(Point p)
+        {
+            p = new Point();
+        }
+        private static void Func3(int x)
+        {
+            x++;
+        }
+
+        private static void Func2(int val)
+        {
+            val++;
+        }
+
+        private static void Func1(int x)
+        {
+
+        }
     }
 }
