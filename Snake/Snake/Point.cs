@@ -34,13 +34,12 @@ namespace Snake
                 case Direction.LEFT:
                     this.x = x - offset;
                     break;
-                case Direction.DOWN:
-                    this.y = y + offset;
-                    break;
                 case Direction.UP:
                     this.y = y - offset;
                     break;
-
+                case Direction.DOWN:
+                    this.y = y + offset;
+                    break;
            }
         }
         public void draw()
