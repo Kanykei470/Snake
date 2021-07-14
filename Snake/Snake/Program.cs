@@ -47,8 +47,7 @@ namespace Snake
                     ConsoleKeyInfo key = Console.ReadKey(true);
                     snake.handleKey(key.Key);
                 }
-                snake.Move();
-                Thread.Sleep(100);
+               
 
                 if (snake.eat(food))
                 {
