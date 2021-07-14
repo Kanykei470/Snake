@@ -29,6 +29,7 @@ namespace Snake
             pList.Add(head);
             tail.clear();
             head.draw();
+           
         }
 
         public  Point getNextPoint()
@@ -56,6 +57,20 @@ namespace Snake
                     direction = Direction.DOWN;
                     break;
             }
+        }
+
+        public bool eat(Point food)
+        {
+            Point head = getNextPoint();
+            if (head.IsHint(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                this.draw();
+                return true;
+            }
+            else
+                return false;
         }
     }
 }
