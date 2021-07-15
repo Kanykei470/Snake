@@ -8,10 +8,11 @@ namespace Snake
 {
     class Snake:Figure
     {
-         Direction  direction;
-        public Snake(Point tail, int length, Direction _direction)
+        Direction  direction;
+        public int score=0;
+        public Snake(Point tail, int length, Direction direction)
         {
-            direction = _direction;
+            this.direction = direction;
             pList = new List<Point>();
             for (int i = 0; i < length; i++)
             {
@@ -40,6 +41,17 @@ namespace Snake
             return nextPoint;
         }
 
+        public bool IsHitTail()
+        {
+            var head = pList.Last();
+            for (int i = 0; i < pList.Count-2; i++)
+            {
+                if (head.IsHit(pList[i]))
+                    return true;
+            }
+            return false;
+        }
+
         public void handleKey(ConsoleKey key)
         {
             switch (key)
@@ -62,15 +74,18 @@ namespace Snake
         public bool eat(Point food)
         {
             Point head = getNextPoint();
-            if (head.IsHint(food))
+            if (head.IsHit(food))
             {
                 food.sym = head.sym;
                 pList.Add(food);
                 this.draw();
+                score++;
                 return true;
             }
             else
                 return false;
         }
+
+       
     }
 }
